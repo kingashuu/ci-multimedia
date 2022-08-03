@@ -185,7 +185,35 @@
                 foreach ($multimedia as $m) { ?>
                   <tr>
                     <td><?php echo $i++; ?></td>
-                    <td><img width="60" height="60" src="<?php echo base_url('resource/Attachment/') . $m['Attachment']; ?>"></td>
+
+                    <td>
+                      <?php
+                      // $type= $m['Type'];
+                      if ($m['Type'] == '.mp4') {
+                        // ||'.WEBM' ||'.MPG' || '.MP2' || '.MPEG' || '.MPE' || '.MPV' || '.OGG' ||  '.M4P' || '.M4V' || '.AVI' || '.WMV' || '.MOV' || 
+                      ?>
+                        
+                        <img width="100" height="100" src="<?php echo base_url('mediaFile/video plase.png'); ?>">
+
+                      <?php
+                      } elseif ($m['Type'] == '.jpg' || $m['Type'] == '.png') {
+
+                      ?>
+                        <img width="100" height="100" src="<?php echo base_url('resource/Attachment/') . $m['Attachment']; ?>">
+                      <?php
+                      } elseif ($m['Type'] == '.mp3') {
+
+                      ?>
+                        <img width="100" height="100" src="<?php echo base_url('mediaFile/download.png'); ?>">
+
+
+                      <?php
+                      }
+                      ?>
+
+                    </td>
+
+
                     <td><?php echo $m['Code']; ?></td>
                     <td><?php echo $m['Name']; ?></td>
                     <td><?php echo $m['Recorde_Date']; ?></td>

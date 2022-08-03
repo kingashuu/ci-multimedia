@@ -11,10 +11,50 @@ class Classification extends CI_Controller{
     // if (!$this->session->userdata('isUserLoggedIn')) {
     //   redirect('Auth/login');
     // }
- } 
+ }
+  function _auto_gen_code()
+  {
+    $max_id = $this->get_max();
+    // $fnam=$this->get_code($max_id);
+    $num = $max_id + 1;
+    return sprintf("%'.03d\n", $num);
+  }
+
+  function get_code($max_id)
+  {
+    $max_id = $this->get_max($max_id);
+    $query = $this->get_where('C_ID', $max_id);
+    foreach ($query->result() as $row) {
+      $Code = $row->Classification_Code;
+    }
+    // echo $Code;
+    return $Code;
+  }
+
+
+  function get_max()
+  {
+    $this->load->model('Classification_model');
+    $max_id = $this->Classification_model->get_max();
+    return $max_id;
+  }
+  function get_where($id)
+  {
+    $this->load->model('Classification_model');
+    $query = $this->Classification_model->get_where($id);
+    return $query;
+  }
+  function get_where_custom($col, $value)
+  {
+    $this->load->model('Classification_model');
+    $query = $this->Classification_model->get_where_custom($col, $value);
+    return $query;
+  }
+
  /*
 * Listing of classification
  */
+
 public function index()
 {
   try{
@@ -34,7 +74,8 @@ public function index()
 try{
       $params = array(
        'Classification_Name'=> $this->input->post('Classification_Name'),
-       'Classification_Code'=> $this->input->post('Classification_Code'),
+      //  'Classification_Code'=> $this->input->post('Classification_Code'),
+        'Classification_Code' => $this->_auto_gen_code(),
        'Description'=> $this->input->post('Description'),
         );
        $this->load->library('upload');
@@ -67,7 +108,7 @@ try{
       {
         $params = array(
            'Classification_Name'=> $this->input->post('Classification_Name'),
-           'Classification_Code'=> $this->input->post('Classification_Code'),
+          //  'Classification_Code'=> $this->input->post('Classification_Code'),
            'Description'=> $this->input->post('Description'),
         );
           if(isset($_POST) && count($_POST) > 0)     

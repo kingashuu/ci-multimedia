@@ -64,12 +64,14 @@
             <?php
             } elseif ($multimedia['Type'] == '.mp3') {
             ?>
-              <audio crossorigin playsinline controls id="player">
-                <source src="<?php echo base_url('mediaFile/cinematic-time-lapse-115672.mp3'); ?>" type="audio/mp3" />
-                <source src="/path/to/audio.ogg" type="audio/ogg" />
-              </audio>
+              <div style="padding-top: 200px;">
+                <audio crossorigin playsinline controls id="player">
+                  <source src="<?php echo base_url('mediaFile/cinematic-time-lapse-115672.mp3'); ?>" type="audio/mp3" />
+                  <source src="/path/to/audio.ogg" type="audio/ogg" />
+                </audio>
+              </div>
             <?php
-            } elseif ($multimedia['Type'] == '.jpg' || '.PNG') {
+            } elseif ($multimedia['Type'] == '.jpg' || $multimedia['Type'] == '.png') {
             ?>
               <img class="img-responsive text-center" src="<?php echo base_url('resource/Attachment/') . $multimedia['Attachment']; ?>" alt="<?php $multimedia['Name']; ?>">
             <?php

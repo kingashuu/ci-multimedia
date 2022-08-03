@@ -11,7 +11,46 @@ class Sub_classification extends CI_Controller{
     if (!$this->session->userdata('isUserLoggedIn')) {
       redirect('Auth/login');
     }
- } 
+ }
+
+  function _auto_gen_code()
+  {
+    $max_id = $this->get_max();
+    // $fnam=$this->get_code($max_id);
+    $num = $max_id + 1;
+    return sprintf("%'.03d\n", $num);
+  }
+
+  function get_code($max_id)
+  {
+    $max_id = $this->get_max($max_id);
+    $query = $this->get_where('SC_ID', $max_id);
+    foreach ($query->result() as $row) {
+      $Code = $row->Code;
+    }
+    // echo $Code;
+    return $Code;
+  }
+
+
+  function get_max()
+  {
+    $this->load->model('Sub_Classification_model');
+    $max_id = $this->Sub_Classification_model->get_max();
+    return $max_id;
+  }
+  function get_where($id)
+  {
+    $this->load->model('Sub_Classification_model');
+    $query = $this->Sub_Classification_model->get_where($id);
+    return $query;
+  }
+  function get_where_custom($col, $value)
+  {
+    $this->load->model('Sub_Classification_model');
+    $query = $this->Sub_Classification_model->get_where_custom($col, $value);
+    return $query;
+  }
  /*
 * Listing of sub_classification
  */
@@ -34,7 +73,7 @@ public function index()
 try{
       $params = array(
        'Sub_Classification_Name'=> $this->input->post('Sub_Classification_Name'),
-       'Sub_Classification_Code'=> $this->input->post('Sub_Classification_Code'),
+       'Sub_Classification_Code'=> $this->_auto_gen_code(),
        'Classification'=> $this->input->post('Classification'),
        'Description'=> $this->input->post('Description'),
         );
@@ -70,7 +109,7 @@ try{
       {
         $params = array(
            'Sub_Classification_Name'=> $this->input->post('Sub_Classification_Name'),
-           'Sub_Classification_Code'=> $this->input->post('Sub_Classification_Code'),
+          //  'Sub_Classification_Code'=> $this->input->post('Sub_Classification_Code'),
            'Classification'=> $this->input->post('Classification'),
            'Description'=> $this->input->post('Description'),
         );

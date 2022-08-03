@@ -46,20 +46,16 @@
                           <source src="movie.ogg" type="video/ogg">
                         </video>
                       <?php
-                      } elseif ($m['Type'] == '.jpg' || '.PNG') {
+                      } elseif ($m['Type'] == '.jpg' || $m['Type'] == '.png') {
 
                       ?>
                         <img width="100" height="100" src="<?php echo base_url('resource/Attachment/') . $m['Attachment']; ?>">
                       <?php
-                      } else {
+                      } elseif ($m['Type'] == '.mp3')  {
 
                       ?>
-                        <!-- <img width="100" height="100" src="<?php echo base_url('mediaFile/download.png'); ?>">
-                        <audio controls> -->
-                          <source src="horse.ogg" type="audio/ogg">
-                          <source src="horse.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                        </audio>
+                        <img width="100" height="100" src="<?php echo base_url('mediaFile/download.png'); ?>">
+
 
                       <?php
                       }

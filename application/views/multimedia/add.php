@@ -80,6 +80,7 @@
                     <span class="text-danger"><?php echo form_error('Sub_Classification'); ?></span>
                   </div>
                 </div>
+                
                 <!-- <div class="col-sx-12 col-sm-4 col-md-4">
                 <label for="Type" class="control-label"> <span class="text-danger"></span>Type</label>
                 <div class="form-group">

@@ -22,13 +22,13 @@
 <div class="row">
     <div class="col-md-12">
             <?php echo form_open('classification/add'); ?>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <!-- <div class="col-xs-12 col-sm-12 col-md-12">
                <label for="Classification_Code" class="control-label"> <span class="text-danger"></span>Classification Code</label>
                 <div class="form-group">
                   <input type="text" name="Classification_Code" value="<?php echo $this->input->post('Classification_Code'); ?>" class="form-control " id="Classification_Code" />
                    <span class="text-danger"><?php echo form_error('Classification_Code');?></span>
                </div>
-             </div>
+             </div> -->
              <div class="col-xs-12 col-sm-12 col-md-12">
                <label for="Classification_Name" class="control-label"> <span class="text-danger"></span>Classification Name</label>
                 <div class="form-group">

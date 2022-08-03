@@ -33,10 +33,12 @@
             <?php
             } elseif ($multimedia['Type'] == '.mp3') {
             ?>
-              <audio crossorigin playsinline controls id="player">
-                <source src="<?php echo base_url('mediaFile/cinematic-time-lapse-115672.mp3'); ?>" type="audio/mp3" />
-                <source src="/path/to/audio.ogg" type="audio/ogg" />
-              </audio>
+              <div style="padding-top: 200px;">
+                <audio crossorigin playsinline controls id="player">
+                  <source src="<?php echo base_url('mediaFile/cinematic-time-lapse-115672.mp3'); ?>" type="audio/mp3" />
+                  <source src="/path/to/audio.ogg" type="audio/ogg" />
+                </audio>
+              </div>
             <?php
             } elseif ($multimedia['Type'] == '.jpg' || '.PNG') {
             ?>
@@ -100,7 +102,7 @@
                 <span class="description"><i class="fa fa-safari margin-r-5"></i>Posted at- <?= $multimedia['Recorde_Date']; ?></span>
               </div>
               <hr>
-              <a href="<?php echo base_url('resource/Attachment/') . $multimedia['Attachment']?> " class=" btn btn-lg btn-twitter btn-flat btn-block " download>
+              <a href="<?php echo base_url('resource/Attachment/') . $multimedia['Attachment'] ?> " class=" btn btn-lg btn-twitter btn-flat btn-block " download>
                 <span class="glyphicon glyphicon-download-alt"></span>
                 Download
               </a>

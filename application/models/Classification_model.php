@@ -9,9 +9,41 @@ class Classification_model extends CI_Model
       {
           parent::__construct();
       }
-      /*
+  /*
         * Get classification by C_ID 
-      */ 
+      */
+
+
+  function get_table()
+  {
+    $table = "classification";
+    return $table;
+  }
+
+
+  function get_max()
+  {
+    $table = $this->get_table();
+    $this->db->select_max('C_ID');
+    $query = $this->db->get($table);
+    $row = $query->row();
+    $id = $row->C_ID;
+    return $id;
+  }
+  function get_where_custom($col, $value)
+  {
+    $table = $this->get_table();
+    $this->db->where($col, $value);
+    $query = $this->db->get($table);
+    return $query;
+  }
+  function get_where($id)
+  {
+    $table = $this->get_table();
+    $this->db->where('id', $id);
+    $query = $this->db->get($table);
+    return $query;
+  }
       function get_classification($C_ID)
       {
         try{
